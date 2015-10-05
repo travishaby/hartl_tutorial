@@ -28,7 +28,13 @@ class ClickLinksOnLandingPageTest < Capybara::Rails::TestCase
     assert page.has_content?(message)
   end
 
-  def test_something_else
+  def test_visiting_signup_page
+    visit root_path
+    within("#signup-button") do
+      click_on "Sign up now!"
+    end
 
+    assert_equal current_path, signup_path
+    assert page.has_content?("Please create an account:")
   end
 end
