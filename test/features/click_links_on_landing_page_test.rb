@@ -35,6 +35,6 @@ class ClickLinksOnLandingPageTest < Capybara::Rails::TestCase
     end
 
     assert_equal current_path, signup_path
-    assert page.has_content?("Please create an account:")
+    assert page.has_content?("Sign up")
   end
 end
