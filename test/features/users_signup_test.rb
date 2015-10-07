@@ -1,5 +1,4 @@
 require "test_helper"
-require "launchy"
 
 class UsersSignupTest < Capybara::Rails::TestCase
   #IS THIS THE NEW SYNTAX FOR MINITEST??!?! THIS IS MADNESSS!

@@ -26,6 +26,12 @@ class ClickLinksOnLandingPageTest < Capybara::Rails::TestCase
     assert_equal "Help | Ruby on Rails Tutorial Sample App", page.title
     message = "Help"
     assert page.has_content?(message)
+
+    visit root_path
+    within("#navbar") do
+      click_on "Log In"
+    end
+    assert_equal current_path, login_path
   end
 
   def test_visiting_signup_page
