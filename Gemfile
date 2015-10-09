@@ -33,6 +33,7 @@ group :development, :test do
   gem 'byebug'
   gem 'pry'
   gem 'minitest-rails-capybara'
+  gem 'minitest-emoji'
   gem 'launchy'
 end
 
