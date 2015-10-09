@@ -5,12 +5,18 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(email: email)
     if @user && @user.authenticate(params[:user][:password])
-      session[:user_id] = User.find_by(email: email).id
-      redirect_to user_path(current_user)
+      log_in(@user)
+      redirect_to user_path(@user)
     else
       flash.now[:error] = "Sorry, invalid login"
       render :new
     end
+  end
+
+  def destroy
+    log_out
+    flash[:notice] = "Successfully logged out"
+    redirect_to login_path
   end
 
   private

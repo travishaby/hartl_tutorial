@@ -25,10 +25,6 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootstrap-sass'
 
-gem 'httparty'
-
-gem 'rails-api'
-
 gem 'figaro'
 
 group :development, :test do

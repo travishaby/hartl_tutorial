@@ -30,10 +30,12 @@ class UsersSignupTest < Capybara::Rails::TestCase
         click_on "Create my account"
       end
     end
+    user = User.find_by(email: "user@example.com")
 
     assert page.has_content?("Welcome, Example User")
-    within(".flash_messages") do
-      assert page.has_content?("Your account has been created.")
-    end
+    assert_equal current_path, user_path(user)
+    # within(".flash_messages") do
+    #   assert page.has_content?("Your account has been created.")
+    # end
   end
 end

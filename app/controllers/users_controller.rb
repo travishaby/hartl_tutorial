@@ -6,12 +6,17 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      log_in(@user)
       flash[:success] = "Your account has been created."
       redirect_to user_path(@user)
     else
       flash.now[:error] = "Please enter valid information."
       render :new
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   private
