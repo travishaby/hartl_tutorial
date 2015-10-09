@@ -25,12 +25,15 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'bootstrap-sass'
 
+gem 'figaro'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'sqlite3'
   gem 'byebug'
   gem 'pry'
   gem 'minitest-rails-capybara'
+  gem 'minitest-emoji'
   gem 'launchy'
 end
 

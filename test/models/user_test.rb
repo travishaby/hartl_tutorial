@@ -72,4 +72,13 @@ class UserTest < ActiveSupport::TestCase
     user.password = user.password_confirmation = "a" * 5
     assert_not user.valid?
   end
+
+  def test_user_has_default_role_of_non_admin
+    assert_equal user.role, "default"
+  end
+
+  def test_user_can_be_admin
+    user.role = "admin"
+    assert_equal user.role, "admin"
+  end
 end
