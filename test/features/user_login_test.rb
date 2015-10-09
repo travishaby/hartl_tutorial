@@ -11,16 +11,30 @@ class UserLoginTest < Capybara::Rails::TestCase
     @user ||= User.find_by(email: "travis@travishaby.com")
   end
 
-  test "user can log in" do
+  test "registered user can log in" do
     test_setup
     visit login_path
 
     within("#login_form") do
-      fill_in "session[email]", with: "travishaby"
-      fill_in "session[password]", with: "password"
+      fill_in "user[email]", with: "travis@travishaby.com"
+      fill_in "user[password]", with: "password"
       click_on "Log In"
     end
 
+    assert page.has_content?("Welcome, #{user.name}")
     assert_equal current_path, user_path(user)
+  end
+
+  test "unregistered user cant log in" do
+    visit login_path
+
+    within("#login_form") do
+      fill_in "user[email]", with: "travis@travishaby.com"
+      fill_in "user[password]", with: "password"
+      click_on "Log In"
+    end
+
+    assert page.has_content?("Sorry, invalid login")
+    assert_equal current_path, login_path
   end
 end
